@@ -1,0 +1,246 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.BorderLayout;
+
+
+public class MainApp {
+
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField1;
+	private JTextField textField2;
+	private JTextField textField3;
+	private JTextField textField4;
+	private JTextField textField5;
+	private JTextField textField6;
+	private JTextField textField7;
+
+
+	// Main class/Console Application
+	public static void main(String[] args) {
+
+		ArrayList<Patient> patientList = new ArrayList<Patient>();
+		Patient tempPatient;
+		String answer = null;
+		ArrayList<String> paymentList = new ArrayList<String>();
+		ArrayList<String> procedureList = new ArrayList<String>();
+
+
+		Scanner keyboard = new Scanner(System.in);
+
+		EventQueue.invokeLater(new Runnable() {
+
+			public void run() {
+
+
+				try {
+
+					MainApp window = new MainApp();
+
+					window.frame.setVisible(true);
+				} 
+				catch (Exception e) {
+
+					e.printStackTrace();
+
+				}
+			}
+		});
+	}
+
+
+	// Constructor
+	public MainApp() {
+
+		//Print the initialize method
+		initialize();
+	}
+
+
+	// The following method initializes all the contents within the JFrame
+
+	private void initialize() {
+
+		//JFrame
+		frame = new JFrame();
+		frame.setBounds(50, 20, 740, 460);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		//JLabel
+		JLabel patientName = new JLabel("Patient Name");
+		patientName.setBounds(20, 16, 88, 16);
+		frame.getContentPane().add(patientName);
+
+		//TextField
+		textField = new JTextField();
+		textField.setBounds(109, 10, 61, 28);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+
+
+		JLabel address = new JLabel("Address");
+		address.setBounds(182, 16, 61, 16);
+		frame.getContentPane().add(address);
+
+		textField1 = new JTextField();
+		textField1.setBounds(241, 10, 61, 28);
+		frame.getContentPane().add(textField1);
+		textField1.setColumns(10);
+
+		JLabel contactNumber = new JLabel("Contact Number");
+		contactNumber.setBounds(328, 16, 108, 16);
+		frame.getContentPane().add(contactNumber);
+
+		textField2 = new JTextField();
+		textField2.setBounds(438, 10, 93, 28);
+		frame.getContentPane().add(textField2);
+		textField2.setColumns(10);
+
+
+		JButton addPatient = new JButton("Add Patient");
+		addPatient.setBounds(10, 50, 125, 25);
+		frame.getContentPane().add(addPatient);
+
+
+		JButton removePatient = new JButton("Remove Patient");
+		removePatient.setBounds(140, 50, 125, 25);
+		frame.getContentPane().add(removePatient);
+
+
+		JButton displayPatients = new JButton("Display Patients");
+		displayPatients.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		}
+				);
+		displayPatients.setBounds(270, 50, 125, 25);
+		frame.getContentPane().add(displayPatients);
+
+
+
+		JButton saveAndQuit = new JButton("Save and Quit");
+		saveAndQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		saveAndQuit.setBounds(400, 50, 125, 25);
+		frame.getContentPane().add(saveAndQuit);
+
+
+
+		JButton quitWithoutSaving = new JButton("Quit without Saving");
+		quitWithoutSaving.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		quitWithoutSaving.setBounds(530, 50, 160, 25);
+		frame.getContentPane().add(quitWithoutSaving);
+
+
+		JPanel topPanel = new JPanel();
+		topPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		topPanel.setBackground(new Color(173,216,230));
+		topPanel.setBounds(0, 85, 690, 100);
+		frame.getContentPane().add(topPanel);
+
+
+		JLabel patient = new JLabel("Patient");
+		patient.setBounds(20, 390, 61, 16);
+		frame.getContentPane().add(patient);
+
+		textField3 = new JTextField();
+		textField3.setBounds(96, 200, 82, 28);
+		frame.getContentPane().add(textField3);
+		textField3.setColumns(10);
+
+
+		JLabel procedure = new JLabel("Procedure");
+		procedure.setBounds(220, 205, 69, 16);
+		frame.getContentPane().add(procedure);
+
+
+		textField4 = new JTextField();
+		textField4.setBounds(298, 200, 75, 28);
+		frame.getContentPane().add(textField4);
+		textField4.setColumns(10);
+
+		JLabel amount = new JLabel("Amount");
+		amount.setBounds(208, 390, 61, 16);
+		frame.getContentPane().add(amount);
+
+		textField5 = new JTextField();
+		textField5.setBounds(462, 200, 69, 28);
+		frame.getContentPane().add(textField5);
+		textField5.setColumns(10);
+
+
+		JButton addProcedure = new JButton("Add Procedure");
+		addProcedure.setBounds(65, 240, 125, 25);
+		frame.getContentPane().add(addProcedure);
+
+
+		JButton deleteProcedure = new JButton("Delete Procedure");
+		deleteProcedure.setBounds(207, 240, 145, 25);
+		frame.getContentPane().add(deleteProcedure);
+
+
+		JButton listProcedures = new JButton("List Procedures");
+		listProcedures.setBounds(380, 240, 125, 25);
+		frame.getContentPane().add(listProcedures);
+
+		JPanel bottomPanel = new JPanel();
+		bottomPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		bottomPanel.setBackground(new Color(173,216,230));
+		bottomPanel.setBounds(0, 275, 690, 100);
+		frame.getContentPane().add(bottomPanel);
+
+		JLabel patient1 = new JLabel("Patient");
+		patient1.setBounds(20, 205, 61, 16);
+		frame.getContentPane().add(patient1);
+
+
+
+
+
+		textField6 = new JTextField();
+		textField6.setBounds(96, 385, 82, 28);
+		frame.getContentPane().add(textField6);
+		textField6.setColumns(10);
+
+		JLabel lblAmount = new JLabel("Amount");
+		lblAmount.setBounds(208, 390, 61, 16);
+		frame.getContentPane().add(lblAmount);
+
+
+		JLabel lblAmount_1 = new JLabel("Amount");
+		lblAmount_1.setBounds(401, 205, 61, 16);
+		frame.getContentPane().add(lblAmount_1);
+
+		textField7 = new JTextField();
+		textField7.setBounds(291, 385, 82, 28);
+		frame.getContentPane().add(textField7);
+		textField7.setColumns(10);
+
+
+		JButton addPayment = new JButton("Add Payment");
+		addPayment.setBounds(422, 385, 117, 29);
+		frame.getContentPane().add(addPayment);
+
+	}
+
+}
+
